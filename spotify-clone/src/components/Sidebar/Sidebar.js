@@ -4,8 +4,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import SidebarOption from '../SidebarOption/SidebarOption';
+import { useDataLayerValue } from '../../util/DataLayer';
 
 function Sidebar() {
+    const [{playlists}, dispatch] = useDataLayerValue();
     return (
         <div className = "sidebar">
             <img className = "sidebar_logo" src = "https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg" alt = "logo"/>
@@ -16,10 +18,12 @@ function Sidebar() {
 
             <strong className = 'sidebar_title'>PLAYLISTS</strong>
             <hr/>
-
-            <SidebarOption title = "Hip Hop"/>
+            {playlists?.items?.map(playlist => (
+                <SidebarOption title={playlist.name}/>
+            ))}
+            {/* <SidebarOption title = "Hip Hop"/>
             <SidebarOption title = "Jazz"/>
-            <SidebarOption title = "Alt"/>
+            <SidebarOption title = "Alt"/> */}
         </div>
     )
 }
