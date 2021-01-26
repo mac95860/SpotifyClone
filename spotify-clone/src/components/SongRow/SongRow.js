@@ -3,9 +3,9 @@ import './SongRow.css';
 
 function SongRow({ track }) {
     return (
-        <div className = "song_row">
+        <div className = "songRow">
             <img className = "songRow_album" src = {track.album.images[0].url}/>
-            <div className = "sonRow_info">
+            <div className = "songRow_info">
                 <h1>{track.name}</h1>
                 <p>
                     {track.artists.map((artist) => artist.name).join(", ")} -{" "}
